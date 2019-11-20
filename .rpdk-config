@@ -1,0 +1,15 @@
+{
+    "typeName": "DoItIntl::GCP::GKE",
+    "language": "java",
+    "runtime": "java8",
+    "entrypoint": "com.doitintl.gcp.gke.HandlerWrapper::handleRequest",
+    "testEntrypoint": "com.doitintl.gcp.gke.HandlerWrapper::testEntrypoint",
+    "settings": {
+        "namespace": [
+            "com",
+            "doitintl",
+            "gcp",
+            "gke"
+        ]
+    }
+}
