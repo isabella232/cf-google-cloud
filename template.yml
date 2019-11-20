@@ -13,6 +13,7 @@ Resources:
       Handler: com.doitintl.gcp.gke.HandlerWrapper::handleRequest
       Runtime: java8
       CodeUri: ./target/doitintl-gcp-gke-handler-1.0-SNAPSHOT.jar
+      Timeout: 60
 
   TestEntrypoint:
     Type: AWS::Serverless::Function
@@ -20,4 +21,5 @@ Resources:
       Handler: com.doitintl.gcp.gke.HandlerWrapper::testEntrypoint
       Runtime: java8
       CodeUri: ./target/doitintl-gcp-gke-handler-1.0-SNAPSHOT.jar
+      Timeout: 60
 

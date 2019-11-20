@@ -1,105 +1,69 @@
 {
-    "typeName": "DoItIntl::GCP::GKE",
-    "description": "An example resource schema demonstrating some basic constructs and validation rules.",
-    "sourceUrl": "https://github.com/aws-cloudformation/aws-cloudformation-rpdk.git",
-    "definitions": {
-        "InitechDateFormat": {
-            "$comment": "Use the `definitions` block to provide shared resource property schemas",
-            "type": "string",
-            "format": "date-time"
-        },
-        "Memo": {
-            "type": "object",
-            "properties": {
-                "Heading": {
-                    "type": "string"
-                },
-                "Body": {
-                    "type": "string"
-                }
-            },
-            "additionalProperties": false
-        }
+  "typeName": "DoItIntl::GCP::GKE",
+  "description": "An example resource schema demonstrating interacting with a GKE cluster.",
+  "sourceUrl": "https://github.com/doitintl/cf-gcp.git",
+  "properties": {
+    "Project": {
+      "description": "The name of the GCP project in which the cluster resides.",
+      "type": "string",
+      "pattern": "(?:[a-z](?:[-a-z0-9]{0,38}[a-z0-9])?)",
+      "minLength": 1,
+      "maxLength": 40
+
     },
-    "properties": {
-        "TPSCode": {
-            "description": "A TPS Code is automatically generated on creation and assigned as the unique identifier.",
-            "type": "string",
-            "pattern": "^[A-Z]{3,5}[0-9]{8}-[0-9]{4}$"
-        },
-        "Title": {
-            "description": "The title of the TPS report is a mandatory element.",
-            "type": "string",
-            "minLength": 20,
-            "maxLength": 250
-        },
-        "CoverSheetIncluded": {
-            "description": "Required for all TPS Reports submitted after 2/19/1999",
-            "type": "boolean"
-        },
-        "DueDate": {
-            "$ref": "#/definitions/InitechDateFormat"
-        },
-        "ApprovalDate": {
-            "$ref": "#/definitions/InitechDateFormat"
-        },
-        "Memo": {
-            "$ref": "#/definitions/Memo"
-        },
-        "SecondCopyOfMemo": {
-            "description": "In case you didn't get the first one.",
-            "$ref": "#/definitions/Memo"
-        },
-        "TestCode": {
-            "type": "string",
-            "enum": [
-                "NOT_STARTED",
-                "CANCELLED"
-            ]
-        },
-        "Authors": {
-            "type": "array",
-            "items": {
-                "type": "string"
-            }
-        }
+    "Name": {
+      "description": "The name of this cluster. The name must be unique within this project and location",
+      "type": "string",
+      "pattern": "(?:[a-z](?:[-a-z0-9]{0,38}[a-z0-9])?)",
+      "minLength": 1,
+      "maxLength": 40
     },
-    "additionalProperties": false,
-    "required": [
-        "TestCode",
-        "Title"
-    ],
-    "readOnlyProperties": [
-        "/properties/TPSCode"
-    ],
-    "primaryIdentifier": [
-        "/properties/TPSCode"
-    ],
-    "handlers": {
-        "create": {
-            "permissions": [
-                "initech:CreateReport"
-            ]
-        },
-        "read": {
-            "permissions": [
-                "initech:DescribeReport"
-            ]
-        },
-        "update": {
-            "permissions": [
-                "initech:UpdateReport"
-            ]
-        },
-        "delete": {
-            "permissions": [
-                "initech:DeleteReport"
-            ]
-        },
-        "list": {
-            "permissions": [
-                "initech:ListReports"
-            ]
-        }
+    "Zone": {
+      "description": "The name of the Google Compute Engine zone in which the cluster resides.",
+      "type": "string"
+    },
+    "InitialNodeCount": {
+      "description": "Initial number of nodes desired in the cluster.",
+      "type": "integer",
+       "default": 3
+    },
+    "Secret": {
+      "description": "The name of the Google Compute Engine zone in which the cluster resides.",
+      "type": "string"
+    },
+    "SecretRegion": {
+      "description": "The name of the Google Compute Engine zone in which the cluster resides.",
+      "type": "string"
     }
+  },
+  "required": [
+    "Name",
+    "Zone",
+    "Project",
+    "Secret",
+    "SecretRegion"
+  ],
+  "handlers": {
+    "create": {
+      "permissions": [
+        "secretsmanager:GetSecretValue"
+      ]
+    },
+    "read": {
+      "permissions": [
+        "ec2:DescribeInstances"
+      ]
+    },
+    "delete": {
+      "permissions": [
+        "ec2:DeleteSecurityGroup",
+        "ec2:DescribeInstances",
+        "ec2:TerminateInstances"
+      ]
+    }
+  },
+  "additionalProperties": false,
+  "primaryIdentifier": [
+    "/properties/Name"
+  ]
 }

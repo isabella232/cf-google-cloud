@@ -1,0 +1,16 @@
+{
+  "action": "CREATE",
+  "request": {
+    "clientRequestToken": "4b90a7e4-b790-456b-a937-0cfdfa211dfe",
+    "desiredResourceState": {
+      "Project": "my-cluster",
+      "Name": "my-cluster",
+      "Zone": "us-central1-a",
+      "InitialNodeCount": 3,
+      "Secret": "cf-gcp",
+      "SecretRegion": "us-west-2"
+    },
+    "logicalResourceIdentifier": "MyResource"
+  },
+  "callbackContext": null
+}

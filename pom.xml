@@ -68,7 +68,37 @@
             <version>2.26.0</version>
             <scope>test</scope>
         </dependency>
+        <dependency>
+            <groupId>com.google.cloud</groupId>
+            <artifactId>google-cloud-container</artifactId>
+            <version>0.117.0-beta</version>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/com.google.apis/google-api-services-container -->
+        <dependency>
+            <groupId>com.google.apis</groupId>
+            <artifactId>google-api-services-container</artifactId>
+            <version>v1-rev78-1.25.0</version>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/com.google.api-client/google-api-client -->
+        <dependency>
+            <groupId>com.google.api-client</groupId>
+            <artifactId>google-api-client</artifactId>
+            <version>1.25.0</version>
+        </dependency>
+        <dependency>
+            <groupId>com.google.auth</groupId>
+            <artifactId>google-auth-library-oauth2-http</artifactId>
+            <version>0.18.0</version>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/com.amazonaws/aws-java-sdk-s3 -->
+        <dependency>
+        <groupId>com.amazonaws</groupId>
+        <artifactId>aws-java-sdk-secretsmanager</artifactId>
+        <version>1.11.339</version>
+    </dependency>
+
     </dependencies>
+
 
     <build>
         <plugins>

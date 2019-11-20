@@ -23,11 +23,10 @@ Resources:
             Statement:
               - Effect: Allow
                 Action:
-                - "initech:CreateReport"
-                - "initech:DeleteReport"
-                - "initech:DescribeReport"
-                - "initech:ListReports"
-                - "initech:UpdateReport"
+                - "ec2:DeleteSecurityGroup"
+                - "ec2:DescribeInstances"
+                - "ec2:TerminateInstances"
+                - "secretsmanager:GetSecretValue"
                 Resource: "*"
 Outputs:
   ExecutionRoleArn:

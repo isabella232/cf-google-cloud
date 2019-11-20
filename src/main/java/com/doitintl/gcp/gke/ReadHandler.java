@@ -18,7 +18,6 @@ public class ReadHandler extends BaseHandler<CallbackContext> {
         final ResourceModel model = request.getDesiredResourceState();
 
         // TODO : put your code here
-
         return ProgressEvent.<ResourceModel, CallbackContext>builder()
             .resourceModel(model)
             .status(OperationStatus.SUCCESS)

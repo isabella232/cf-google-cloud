@@ -1,0 +1,18 @@
+{
+    "AWSTemplateFormatVersion": "2010-09-09",
+    "Description": "GCP stack",
+    "Resources": {
+        "MyGKECluster": {
+            "Type": "DoItIntl::GCP::GKE",
+            "Properties": {
+              "Project": "my-project",
+              "Name": "my-cluster",
+              "Zone": "us-central1-a",
+              "InitialNodeCount": 3,
+              "Secret": "cf-gcp",
+              "SecretRegion": "us-west-2"
+
+            }
+        }
+    }
+}
